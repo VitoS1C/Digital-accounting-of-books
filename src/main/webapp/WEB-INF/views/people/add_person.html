@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить человека</title>
+    <style>
+        input[type="text"] {
+            margin: 2px;
+            float: right;
+        }
+        input[type="submit"] {
+            margin-top: 15px;
+        }
+        label {
+            float: left;
+        }
+
+        div {
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
-
+<div>
+    <form th:action="@{/people/save}" method="post" th:object="${person}">
+        <label for="name">ФИО:</label>
+        <input type="text" id="name" class="vertical-separator" placeholder="Введите ФИО" th:field="*{name}"/>
+        <label for="birth_year">Год рождения:</label>
+        <input type="text" id="birth_year" placeholder="Введите Год рождения" th:field="*{birthYear}" value=""/>
+        <input type="submit" value="Сохранить">
+    </form>
+</div>
 </body>
 </html>

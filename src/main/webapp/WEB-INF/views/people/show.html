@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${person.name}"></title>
+    <style>
+        input {
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <p th:text="${person.name + ', ' + person.birthYear}"></p>
+    <a th:href="@{/people/show_update/{id}(id=${person.id})}">Редактировать</a>
+    <br>
+    <a th:href="@{/people/delete/{id}(id=${person.id})}">Удалить</a>
+    <br>
+    <a href="/people/list">К списку</a>
+</body>
+</html>

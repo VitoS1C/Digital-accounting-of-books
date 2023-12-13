@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'Редактировать ' + person.name}">Title</title>
+    <style>
+        input {
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+<form th:object="${person}" th:action="@{/people/edit}" method="post">
+    <label for="name">ФИО:</label>
+    <input type="text" id="name" class="vertical-separator" placeholder="Введите ФИО" th:field="*{name}"/>
+    <br>
+    <label for="birth_year">Год рождения:</label>
+    <input type="text" id="birth_year" placeholder="Введите Год рождения" th:field="*{birthYear}"/>
+    <br>
+    <input type="hidden" th:value="*{id}" th:field="*{id}" >
+    <input type="submit" value="Сохранить">
+</form>
+</body>
+</html>
