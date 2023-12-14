@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${person.name}"></title>
+    <title th:text="${person.fullName}"></title>
     <style>
         input {
             margin: 2px;
@@ -10,11 +10,31 @@
     </style>
 </head>
 <body>
-    <p th:text="${person.name + ', ' + person.birthYear}"></p>
-    <a th:href="@{/people/show_update/{id}(id=${person.id})}">Редактировать</a>
+<p th:text="${person.fullName + ', ' + person.birthYear}"></p>
+<div th:if="${books.isEmpty()}">
+    <p>Человек пока не взял ни одной книги</p>
+</div>
+
+<div th:if="${!books.isEmpty()}">
+    <hr>
+    <b>Книги:</b>
     <br>
-    <a th:href="@{/people/delete/{id}(id=${person.id})}">Удалить</a>
-    <br>
-    <a href="/people/list">К списку</a>
+    <table th:each="book : ${books}">
+        <tr th:text="${book.title + ', ' + book.author + ', ' + book.year}"></tr>
+    </table>
+    <hr>
+</div>
+
+<form method="get" th:action="@{/people/show_update/{id}(id=${person.id})}">
+    <input type="submit" value="Редактировать">
+</form>
+
+<form method="get" th:action="@{/people/delete/{id}(id=${person.id})}">
+    <input type="submit" value="Удалить">
+</form>
+
+<form method="get" th:action="@{/people/list}">
+    <input type="submit" value="К списку">
+</form>
 </body>
 </html>
