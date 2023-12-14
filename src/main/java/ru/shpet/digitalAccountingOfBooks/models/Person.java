@@ -9,7 +9,7 @@ public class Person {
 
     @NotEmpty(message = "Имя не может быть пустым. Введите ФИО!")
     @Size(min = 2, max = 50, message = "Длина должна быть от 2 до 50 символов!")
-    private String name;
+    private String fullName;
     @Min(value = 0, message = "Год не может быть меньше 0")
     private int birthYear;
 
@@ -19,7 +19,7 @@ public class Person {
 
     public Person(int id, String name, int birthYear) {
         this.id = id;
-        this.name = name;
+        this.fullName = name;
         this.birthYear = birthYear;
     }
 
@@ -31,12 +31,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public int getBirthYear() {

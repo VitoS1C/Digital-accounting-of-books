@@ -7,9 +7,14 @@
 <body>
 <div th:each="person : ${people}">
     <a th:href="@{/people/{id}/(id=${person.getId()})}"
-       th:text="${person.getName()}">user</a>
+       th:text="${person.getFullName()}"></a>
 </div>
 <hr>
-<a th:href="@{/people/add_person}">Добавить человека</a>
+<form method="get" th:action="@{/people/add_person}">
+    <input type="submit" value="Добавить человека">
+</form>
+<form method="get" th:action="@{/books/list}">
+    <input type="submit" value="К списку книг">
+</form>
 </body>
 </html>
